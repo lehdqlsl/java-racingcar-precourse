@@ -1,3 +1,5 @@
+package utils;
+
 public class ValidationUtils {
     private static final int MAX_STRING_LENGTH = 5;
     private static final int MIN_STRING_LENGTH = 1;

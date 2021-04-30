@@ -1,3 +1,7 @@
+package entity;
+
+import utils.ValidationUtils;
+
 public class Car {
     private static final int INIT_START = 0;
     private static final int MOVE_ONE_STEP = 1;
@@ -22,5 +26,13 @@ public class Car {
 
     public int getMove() {
         return this.move;
+    }
+
+    public String printMove() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < move; i++) {
+            stringBuilder.append("-");
+        }
+        return stringBuilder.toString();
     }
 }

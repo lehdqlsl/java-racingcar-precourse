@@ -1,9 +1,14 @@
+package utils;
+
+import entity.Car;
+import entity.Cars;
+import entity.WinnerCars;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarUtils {
     private static final int MOVE_NUMBER = 4;
-    private static final int INIT_MAX_MOVE = 0;
     private static int moveWin = 0;
 
     public static void moveCar(Car car, int randomNo) {
