@@ -2,7 +2,6 @@ package utils;
 
 import entity.Car;
 import entity.Cars;
-import entity.WinnerCars;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,7 @@ public class CarUtils {
     private static int moveWin = 0;
 
     public static void moveCar(Car car, int randomNo) {
-        if(!ValidationUtils.validNo(randomNo)){
+        if (!ValidationUtils.validNo(randomNo)) {
             throw new IllegalArgumentException("랜덤숫자의 범위는 1~9 사이입니다.");
         }
         if (isMove(randomNo)) {
@@ -24,32 +23,31 @@ public class CarUtils {
         return no >= MOVE_NUMBER;
     }
 
-    public static Cars createCars(String sCars) {
-        List<Car> carList = new ArrayList<>();
-        String[] array = sCars.split(",");
-        for(String carName : array){
-            carList.add(new Car(carName));
-        }
-        return new Cars(carList);
-    }
-
-    public static WinnerCars getWinner(Cars cars) {
+    public static Cars getWinner(Cars cars) {
         List<Car> winList = new ArrayList<>();
-        for(Car car : cars.getCarList()){
+        for (Car car : cars.getCarList()) {
             CarUtils.addWinner(winList, car);
         }
-        return new WinnerCars(winList);
+        return new Cars(winList);
     }
 
-    private static void addWinner(List<Car> winList , Car car) {
-        if(car.getMove() > moveWin){
+    private static void addWinner(List<Car> winList, Car car) {
+        if (car.getMove().length() > moveWin) {
             winList.clear();
             winList.add(car);
-            moveWin = car.getMove();
+            moveWin = car.getMove().length();
             return;
         }
-        if(car.getMove() == moveWin){
+        if (car.getMove().length() == moveWin) {
             winList.add(car);
+        }
+    }
+
+    public static void startRacing(Cars cars) {
+        int repeat = CommonUtils.inputRepeat();
+        for (int i = 0; i < repeat; i++) {
+            cars.moveCar();
+            CommonUtils.printMove(cars);
         }
     }
 }

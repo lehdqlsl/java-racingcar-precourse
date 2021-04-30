@@ -5,9 +5,9 @@ import utils.CommonUtils;
 public class Main {
     public static void main(String[] args) {
         CommonUtils.printCarInputInfo();
-        Cars cars = CarUtils.createCars(CommonUtils.inputCar());
+        Cars cars = new Cars(CommonUtils.inputCar());
         CommonUtils.printNoInputInfo();
-        CommonUtils.startRacing(cars);
+        CarUtils.startRacing(cars);
         CommonUtils.printWinner(CarUtils.getWinner(cars));
     }
 }
