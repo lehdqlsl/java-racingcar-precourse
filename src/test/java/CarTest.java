@@ -1,6 +1,5 @@
 import entity.Car;
 import entity.Cars;
-import entity.WinnerCars;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import utils.CarUtils;
@@ -12,7 +11,7 @@ public class CarTest {
     @BeforeEach
     void setUp() {
         String sCars = "k5,bmw,benz,audi";
-        cars = CarUtils.createCars(sCars);
+        cars = new Cars(sCars);
         assertThat(cars.getCarList().get(0).getCarName()).isEqualTo("k5");
         assertThat(cars.getCarList().get(1).getCarName()).isEqualTo("bmw");
         assertThat(cars.getCarList().get(2).getCarName()).isEqualTo("benz");
@@ -26,13 +25,13 @@ public class CarTest {
         CarUtils.moveCar(k5,6);
         CarUtils.moveCar(k5,1);
         CarUtils.moveCar(k5,2);
-        assertThat(k5.getMove()).isEqualTo(2);
+        assertThat(k5.getMove()).isEqualTo("--");
     }
 
     @Test
     void find_winner() {
         cars.moveCar();
-        WinnerCars winnerCars = CarUtils.getWinner(cars);
+        Cars winnerCars = CarUtils.getWinner(cars);
         assertThat(winnerCars.getCarList().get(0).getCarName()).isEqualTo("k5");
         assertThat(winnerCars.getCarList().get(1).getCarName()).isEqualTo("bmw");
         assertThat(winnerCars.getCarList().get(2).getCarName()).isEqualTo("benz");
