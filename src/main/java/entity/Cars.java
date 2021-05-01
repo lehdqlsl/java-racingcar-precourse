@@ -16,12 +16,16 @@ public class Cars {
     }
 
     public Cars(String sCars) {
+        this.carList = splitString(sCars);
+    }
+
+    private List<Car> splitString(String sCars) {
         List<Car> carList = new ArrayList<>();
         String[] array = sCars.split(",");
         for (String carName : array) {
             carList.add(new Car(carName));
         }
-        this.carList = carList;
+        return carList;
     }
 
     public List<Car> getCarList() {
